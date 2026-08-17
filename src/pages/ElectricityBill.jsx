@@ -6,6 +6,7 @@ export default function ElectricityBill() {
   const [rate, setRate] = useState("")
   const [total, setTotal] = useState("")
   const [message, setMessage] = useState("")
+  const [getSubmittedName, setSubmittedName] = useState("")
 
   const handleCalculateBill = (e) => {
     e.preventDefault()
@@ -39,6 +40,8 @@ export default function ElectricityBill() {
     } else {
       setMessage("Normal Electricity Usage")
     }
+
+    setSubmittedName(name)
   }
 
   const handleClear = () => {
@@ -63,6 +66,7 @@ export default function ElectricityBill() {
         <button onClick={handleClear}>Clear</button>
         {total !== "" && (
         <div>
+          <p>Customer Name: {getSubmittedName}</p>
           <p>Rate: {rate}</p>
           <p>Total Bill: ₱{total}</p>
           <p>{message}</p>

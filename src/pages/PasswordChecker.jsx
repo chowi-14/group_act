@@ -3,6 +3,7 @@ import { useState } from "react"
 export default function PasswordChecker() {
   const [password, setPassword] = useState("")
   const [remarks, setRemarks] = useState("")
+  const [message, setMessage] = useState("")
 
   const handleChecker = (e) => {
     e.preventDefault()
@@ -14,11 +15,17 @@ export default function PasswordChecker() {
 
     if (password.length < 6) {
       setRemarks("Weak Password")
+      setMessage("Create a strong password.")
     } else if (password.length >= 6 && password.length <= 9) {
       setRemarks("Medium Password")
+      setMessage("Consider creating a longer password.")
     } else if (password.length >= 10) {
       setRemarks("Strong Password")
+      setMessage("You can use this password.")
+    } else {
+      setMessage("Create a strong password")
     }
+
   }
 
   const handleClear = () => {
@@ -37,7 +44,12 @@ export default function PasswordChecker() {
         <p>Character count: {password.length}</p>
         <button type="submit">Check Password</button>
         <button onClick={handleClear}>Clear</button>
-        {remarks && <p>{remarks}</p>}
+        {remarks && (
+          <div>
+            <p>Status: {remarks}</p>
+            <p>{message}</p>
+          </div>
+          )}
       </form>
     </div>
   )

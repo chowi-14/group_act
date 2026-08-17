@@ -4,6 +4,8 @@ export default function GradeEvaluation() {
   const [name, setName] = useState("")
   const [getScore, setScore] = useState("")
   const [remarks, setRemarks] = useState("")
+  const [getSubmittedName, setSubmittedName] = useState("")
+  const [getSubmittedScore, setSubmittedScore] = useState("")
 
   const handleEvaluation = (e) => {
     e.preventDefault()
@@ -25,12 +27,17 @@ export default function GradeEvaluation() {
     } else {
       setRemarks("Invalid Score")
     }
+
+    setSubmittedName(name)
+    setSubmittedScore(getScore)
   }
 
   const handleClear = () => {
     setName("")
     setScore("")
     setRemarks("")
+    setSubmittedName("")
+    setSubmittedScore("")
   }
 
   return (
@@ -45,7 +52,13 @@ export default function GradeEvaluation() {
         <input type="number" placeholder="Enter score (0-100)" value={getScore} onChange={(e) => setScore(e.target.value)}></input>
         <button type="submit">Evaluate</button>
         <button onClick={handleClear}>Clear</button>
-        {remarks && <p>{remarks}</p>}
+        {remarks && (
+          <div>
+            <p>Student Name: {getSubmittedName}</p>
+            <p>Score: {getSubmittedScore}</p>
+            <p>Remarks: {remarks}</p>
+          </div>
+        )}
       </form>
     </div>
   )
