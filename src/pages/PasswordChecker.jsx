@@ -34,7 +34,7 @@ export default function PasswordChecker() {
   }
 
   return (
-    <div className="flex items-center justify-center px-4">
+    <div className="h-full flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm p-10">
         <p className="text-sm text-slate-500 dark:text-slate-400">Activity 3</p>
         <h2 className="text-xl font-bold text-slate-800 dark:text-white mb-5">Password Strength Checker</h2>

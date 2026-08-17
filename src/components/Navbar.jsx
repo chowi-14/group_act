@@ -1,10 +1,26 @@
 import { NavLink } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 export default function Navbar() {
   const [isDark, setIsDark] = useState(
     () => localStorage.getItem("theme") === "dark"
   )
+
+  const navRef = useRef(null)
+
+  useEffect(() => {
+    const setNavHeight = () => {
+      if (navRef.current) {
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          `${navRef.current.offsetHeight}px`
+        )
+      }
+    }
+    setNavHeight()
+    window.addEventListener("resize", setNavHeight)
+    return () => window.removeEventListener("resize", setNavHeight)
+  }, [])
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
