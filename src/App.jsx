@@ -1,3 +1,6 @@
+import { DotLottiePlayer } from "@dotlottie/react-player"
+import "@dotlottie/react-player/dist/index.css"
+
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Login from "./pages/Login"
@@ -6,33 +9,44 @@ import PasswordChecker from "./pages/PasswordChecker"
 import ElectricityBill from "./pages/ElectricityBill"
 import AttendanceChecker from "./pages/AttendanceChecker"
 
+import LoginAnim from "./assets/animations/Animation_Login.json"
+import GradeAnim from "./assets/animations/Animation_GradeEvaluation.json"
+import PasswordAnim from "./assets/animations/Animation_PasswordChecker.json"
+import BillAnim from "./assets/animations/Animation_ElectricityBill.json"
+import AttendanceAnim from "./assets/animations/Animation_AttendanceChecker.json"
+
 export default function App() {
 
   const activities = [
     {
-      title: "Login",
+      title: "Login Authentication",
       description: "A simple authentication form demonstrating controlled inputs and basic validation.",
       path: "/login",
+      animation: LoginAnim,
     },
     {
-      title: "Grade Evaluation",
+      title: "Student Grade Evaluation",
       description: "Enter scores and instantly see computed grades and pass/fail results.",
       path: "/grade",
+      animation: GradeAnim,
     },
     {
-      title: "Password Checker",
+      title: "Password Strength Checker",
       description: "Checks password strength in real time based on length and character variety.",
       path: "/password",
+      animation: PasswordAnim,
     },
     {
-      title: "Electricity Bill",
+      title: "Electricity Bill Checker",
       description: "Calculates estimated electricity costs based on usage input.",
       path: "/bill",
+      animation: BillAnim,
     },
     {
-      title: "Attendance Checker",
+      title: "Employee Attendance Checker",
       description: "Tracks and evaluates attendance records against a minimum requirement.",
       path: "/attendance",
+      animation: AttendanceAnim,
     },
   ]
 
@@ -81,22 +95,33 @@ export default function App() {
                       id={`activity-${index + 1}`}
                       className="h-full w-full flex items-center justify-center px-4 border-t border-slate-200 dark:border-gray-800 snap-start"
                     >
-                      <div className="max-w-xl text-center">
-                        <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wide text-indigo-600 bg-indigo-50 rounded-full uppercase">
-                          Activity {index + 1}
-                        </span>
-                        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-4">
-                          {activity.title}
-                        </h2>
-                        <p className="text-slate-500 dark:text-slate-400 text-lg mb-8">
-                          {activity.description}
-                        </p>
-                        <Link
-                          to={activity.path}
-                          className="px-5 py-2.5 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors inline-block"
-                        >
-                          Go to {activity.title}
-                        </Link>
+                      <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
+                        <div className="relative w-100 h-100 md:w-150 md:h-150 shrink-0">
+                          <div className="absolute inset-0 rounded-full bg-gray-100 dark:bg-gray-800 transition-colors" />
+                          <DotLottiePlayer
+                            src={activity.animation}
+                            autoplay
+                            loop
+                            className="relative z-10 w-full h-full"
+                          />
+                        </div>
+                        <div className="text-center md:text-left">
+                          <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wide text-indigo-600 bg-indigo-50 rounded-full uppercase">
+                            Activity {index + 1}
+                          </span>
+                          <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-4">
+                            {activity.title}
+                          </h2>
+                          <p className="text-slate-500 dark:text-slate-400 text-lg mb-8">
+                            {activity.description}
+                          </p>
+                          <Link
+                            to={activity.path}
+                            className="px-5 py-2.5 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors inline-block"
+                          >
+                            Go to {activity.title}
+                          </Link>
+                        </div>
                       </div>
                     </section>
                   ))}
