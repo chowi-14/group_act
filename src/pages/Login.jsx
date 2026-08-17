@@ -35,7 +35,9 @@ export default function Login() {
 
       {!isLoggedIn ? (
         <form onSubmit={handleLogin}>
+          <label>Username</label>
           <input type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+          <label>Password</label>
           <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <button type="submit">Login</button>
           {getMessage && <p>{getMessage}</p>}

@@ -39,7 +39,9 @@ export default function GradeEvaluation() {
       <p>Activity 2</p>
 
       <form onSubmit={handleEvaluation}>
+        <label>Student Name</label>
         <input type="text" placeholder="Enter Student Name" value={name} onChange={(e) => setName(e.target.value)}/>
+        <label>Score</label>
         <input type="number" placeholder="Enter score (0-100)" value={getScore} onChange={(e) => setScore(e.target.value)}></input>
         <button type="submit">Evaluate</button>
         <button onClick={handleClear}>Clear</button>

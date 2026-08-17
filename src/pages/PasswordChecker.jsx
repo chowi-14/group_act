@@ -32,6 +32,7 @@ export default function PasswordChecker() {
       <p>Activity 3</p>
 
       <form onSubmit={handleChecker}>
+        <label>Password</label>
         <input type="text" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <p>Character count: {password.length}</p>
         <button type="submit">Check Password</button>
