@@ -39,6 +39,7 @@ export default function Login() {
           <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <button type="submit">Login</button>
           {getMessage && <p>{getMessage}</p>}
+          <p>Sample Credentials - Username: admin, Password: 1234</p>
         </form>
       ) : (
         <div>
