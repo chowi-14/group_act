@@ -27,14 +27,16 @@ export default function Login() {
     setPassword("")
     setMessage("")
   }
+
   return (
     <div>
       <h2>Login Authentication</h2>
+      <p>Activity 1</p>
 
       {!isLoggedIn ? (
         <form onSubmit={handleLogin}>
-          <input type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
-          <input type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+          <input type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)}></input>
+          <input type="password" placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
           <button type="submit">Login</button>
           {getMessage && <p>{getMessage}</p>}
         </form>
