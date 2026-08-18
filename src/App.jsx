@@ -14,8 +14,19 @@ import GradeAnim from "./assets/animations/Animation_GradeEvaluation.json"
 import PasswordAnim from "./assets/animations/Animation_PasswordChecker.json"
 import BillAnim from "./assets/animations/Animation_ElectricityBill.json"
 import AttendanceAnim from "./assets/animations/Animation_AttendanceChecker.json"
+import DeveloperAnim from "./assets/animations/Animation_Developer.json"
 
 export default function App() {
+
+  const team = {
+    members: [
+      "NAVARRO, Christianne Marie",
+      "REYNALDO, Zoe Claudette",
+      "RUPERTO, Kenneth Cole",
+      "TELEBRICO, Aila Jeane",
+    ],
+    animation: DeveloperAnim,
+  }
 
   const activities = [
     {
@@ -125,6 +136,41 @@ export default function App() {
                       </div>
                     </section>
                   ))}
+
+                  <section
+                    id="activity-6"
+                    className="h-full w-full flex items-center justify-center px-4 border-t border-slate-200 dark:border-gray-800 snap-start"
+                    >
+                      <div className="max-w-6xl w-full flex flex-col md:flex-row items-center justify-start gap-10 md:gap-16">
+                        <div className="relative w-100 h-100 md:w-150 md:h-150 shrink-0">
+                          <div className="absolute inset-0 rounded-full bg-gray-100 dark:bg-gray-800 transition-colors" />
+                          <DotLottiePlayer
+                          src={team.animation}
+                          autoplay
+                          loop
+                          className="relative z-10 w-full h-full"
+                        />
+                      </div>
+                      <div className="text-center md:text-left">
+                        <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wide text-indigo-600 bg-indigo-50 rounded-full uppercase">
+                          Developers
+                        </span>
+                        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-6">
+                          CanIt Code Members:
+                        </h2>
+                        <ul className="space-y-2">
+                          {team.members.map((name) => (
+                            <li
+                              key={name}
+                              className="text-slate-600 dark:text-slate-300 text-lg"
+                            >
+                              {name}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </section>
                 </>
               }
             />
